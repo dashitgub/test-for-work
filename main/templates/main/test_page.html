@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD & WebSocket Test</title>
+    <script>
+        const ws = new WebSocket('ws://localhost:8000/ws/notifications/');
+        ws.onmessage = function(event) {
+            document.getElementById("notifications").innerHTML += '<p>' + event.data + '</p>';
+        };
+    </script>
+</head>
+<body>
+    <h1>CRUD Operations and WebSocket Notifications</h1>
+    <div id="notifications"><h2>Notifications:</h2></div>
+</body>
+</html>

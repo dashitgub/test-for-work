@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  # Сервис для Django
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8000"
+    depends_on:
+      - db
+      - redis
+
+  # Сервис для PostgreSQL
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: dastest
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: dasff
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Сервис для Redis
+  redis:
+    image: redis:alpine
+
+volumes:
+  postgres_data:

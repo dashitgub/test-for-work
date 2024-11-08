@@ -1,0 +1,6 @@
+django
+djangorestframework
+channels 
+drf-yasg 
+redis
+psycopg2-binary
